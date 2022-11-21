@@ -268,9 +268,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 padding: EdgeInsets.all(30.0),
                 child: Text(
                   """
-                      We are a disruptive technology provider to the Hospitality sector,offering powerful point of sale technology solutions
-              including ePOS systems, self checkouts, online and contactless ordering, and payment solutions. We want to help hospitality
-              providers,including restaurants, takeaways, pubs and bars, transform, scale and grow their business’ through technology. """,
+                      We are a disruptive technology provider to the Hospitality sector,offering powerful point of sale technology solutions including ePOS systems, self checkouts, online and contactless ordering, and payment solutions. We want to help hospitality providers,including restaurants, takeaways, pubs and bars, transform, scale and grow their business’ through technology. """,
                   style: TextStyle(fontSize: 23),
                 ),
               ),
