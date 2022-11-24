@@ -2,6 +2,7 @@ import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/profile.dart';
 import 'badge_widget.dart';
+import 'bottom nav bar.dart';
 import 'forms.dart';
 import 'list_page.dart';
 import 'multichild_layouts.dart';

@@ -10,6 +10,40 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   var value =0;
+  int _currentIndex = 2;
+  final items = [
+    Center(child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: const [
+        Icon(Icons.home,size: 90,),
+        Text("Home")],),),
+    Center(child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: const [
+        Icon(Icons.search,size: 90,),
+        Text("Search")],),),
+    Center(child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: const [
+        Icon(Icons.video_collection,size: 90,),
+        Text("Media")],),),
+    Center(child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: const [
+        Icon(Icons.favorite_border,size: 90,),
+        Text("Notifications")],),),
+    Center(child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: const [
+        Icon(Icons.account_circle,size: 90,),
+        Text("Profile")],),),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,35 +76,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ),
                   ),
-                  // Positioned(
-                  //     right: 3,
-                  //     top: 3,
-                  //     child: Badge(
-                  //       badgeContent:Text('$value'),
-                  //       child: const Icon(
-                  //         Icons.settings,
-                  //       ),
-                  //     )),
                 ],
               ),
             ),
           ]
       ),
-        // Badge(
-        //   padding: const EdgeInsets.all(10),
-        //   badgeContent:  const Text("5",
-        //     style: TextStyle(fontSize: 20,color: Colors.white),) ,
-        //   badgeColor:Colors.pink ,
-        //   // position: BadgePosition.center(),
-        //   child: const Align(
-        //       alignment: Alignment.topRight,
-        //       child: Icon(Icons.mail,size: 70,)),
-        //   //
-        // ),
-        // Badge(
-        //   badgeContent: Text('10'),
-        //   child: Icon(Icons.email),
-        // ),
       drawer: Drawer(
         width: 250,
         child: ListView(
@@ -114,10 +124,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
       Padding(
         padding: const EdgeInsets.all(20.0),
         child: ListView(
-          // Column(
-          //   mainAxisAlignment: MainAxisAlignment.start,
-          //   crossAxisAlignment: CrossAxisAlignment.center,
-
             children: [
               // Padding(
               //     padding:const EdgeInsets.all(30),
@@ -140,7 +146,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 padding: const EdgeInsets.all(20.0),
                 child: (Image.asset(
                   "assets/images/epos.jpg",
-                  height: 250,
+                  height: 180,
                   width: 200,
                 )),
               ),
@@ -192,13 +198,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               alignment: Alignment.center,
                               padding: const EdgeInsets.all(10),
                               badgeContent:   Text("$value",
+                                 // items[_currentIndex],
                                 style: const TextStyle(fontSize: 20,color: Colors.white),) ,
                               badgeColor:Colors.pink ,
                               animationType: BadgeAnimationType.scale,
                               // position: BadgePosition.center(),
-                              child: const Align(
+                              child:  Align(
                                   alignment: Alignment.topRight,
-                                  child: Icon(Icons.mail,size: 70,)),
+                                  child: Card(child:items[_currentIndex],)),
                               //
                             ),
                           ),
@@ -272,32 +279,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   style: TextStyle(fontSize: 23),
                 ),
               ),
-              //     Padding(
-              //     padding: const EdgeInsets.all(10.0),
-              //     child: Badge(
-              //       alignment: Alignment.center,
-              //       padding: const EdgeInsets.all(10),
-              //       badgeContent:   Text("$value",
-              //         style: const TextStyle(fontSize: 20,color: Colors.white),) ,
-              //       badgeColor:Colors.pink ,
-              //       // position: BadgePosition.center(),
-              //       child: const Align(
-              //           alignment: Alignment.topRight,
-              //           child: Icon(Icons.mail,size: 70,)),
-              //       //
-              //     ),
-              // ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 2.0) ,
                 child: Expanded(
                   child: Align(
                     alignment: Alignment.bottomCenter,
-                    child: Badge(
-                      padding: const EdgeInsets.all(10),
-                      badgeContent:   Text("$value",
-                        style: const TextStyle(fontSize: 20,color: Colors.white),) ,
-                      badgeColor:Colors.green ,
-                      animationType: BadgeAnimationType.scale,
                       child: ElevatedButton(
                           onPressed: () {
                             setState(() {
@@ -318,35 +304,45 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                   ),
                 ),
-              )
             ],
           ),
         ),
-        // Padding(
-        //   padding: const EdgeInsets.symmetric(vertical: 2.0) ,
-        //
-        //   child: Expanded(
-        //     child: Align(
-        //       alignment: Alignment.bottomCenter,
-        //       child: ElevatedButton(
-        //           onPressed: () {
-        //             debugPrint("button clicked");
-        //           },style:
-        //       ElevatedButton.styleFrom(
-        //         shape: RoundedRectangleBorder(
-        //             borderRadius: BorderRadius.circular(32.0)),
-        //         minimumSize: const Size(800, 40),
-        //       ),
-        //           child: const Text(
-        //             'Enter',
-        //             style: TextStyle(
-        //               fontSize: 30,
-        //             ),
-        //           )),
-        //     ),
-        //   ),
-        // )
-
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.white ,
+        selectedItemColor: Colors.black,
+        unselectedItemColor: Colors.grey,
+        iconSize: 35,
+        items:  const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label:"Home",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label:"Search",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.video_collection),
+            label:"Media",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite_border),
+            label:"notifi",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_circle),
+            label:"Profile",
+          ),
+        ],
+        onTap: (index){
+          setState(() {
+            _currentIndex = index;
+            value++;
+          });
+        },
+      ),
       );
   }
 }
